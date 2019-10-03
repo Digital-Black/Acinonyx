@@ -1,0 +1,24 @@
+##############################
+#                            #
+#    Digital-Black           #
+#    12/6/2018               #
+#    Digital-Black.py        #
+#                            #
+##############################
+
+import os, sys, time    # import system 
+
+try:
+    path = sys.argv[1]         # requires full path as first argument
+    maxsize = int(sys.argv[2]) # user input argument for max file size
+    dirs = os.listdir(path)    # directory display
+except Exception:              # obfuscates code
+    print("Error: enter a full path, and maximum file size as an integer\n(e.g. Digital-Black.py c:\directory 50)") # describes the failure without code
+    
+
+try:
+    for file in dirs:          # iterates over directory files
+        if os.stat(file).st_size <= maxsize: # filters files smaller than max
+            print (file, os.stat(file).st_size, time.ctime(os.path.getctime(file))) # displays information
+except Exception:              # obfuscates code
+    print("Program displayed no result") # tells user the failure occured during display
